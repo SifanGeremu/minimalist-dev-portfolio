@@ -1,8 +1,15 @@
 import { useState } from "react";
-import { Menu, X, Github, Linkedin, Mail, ArrowRight } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Menu, X, Github, Linkedin, Mail, ArrowRight, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { useToast } from "@/hooks/use-toast";
 import heroPortrait from "@/assets/hero-portrait.jpg";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
@@ -14,8 +21,39 @@ import blog1 from "@/assets/blog-1.jpg";
 import blog2 from "@/assets/blog-2.jpg";
 import blog3 from "@/assets/blog-3.jpg";
 
+const contactFormSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  message: z.string().trim().min(1, "Message is required").max(1000, "Message must be less than 1000 characters"),
+});
+
 const Index = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { toast } = useToast();
+  
+  const form = useForm<z.infer<typeof contactFormSchema>>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
+
+  const onSubmit = (values: z.infer<typeof contactFormSchema>) => {
+    const whatsappNumber = "1234567890"; // Replace with your WhatsApp number
+    const message = `New Contact Form Submission:\n\nName: ${values.name}\nEmail: ${values.email}\nMessage: ${values.message}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    
+    window.open(whatsappUrl, '_blank');
+    
+    toast({
+      title: "Message sent!",
+      description: "Thank you for reaching out. I'll get back to you soon.",
+    });
+    
+    form.reset();
+  };
 
   const projects = [
     {
@@ -210,18 +248,24 @@ const Index = () => {
             </div>
 
             <div className="space-y-6">
-              <Card className="p-6 border-border-subtle hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-background to-background-subtle">
-                <h3 className="font-bold text-xl mb-6">Programming Skills</h3>
-                <div className="space-y-4">
+              <Card className="p-8 border-border-subtle hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-background via-background-subtle to-background">
+                <div className="mb-8">
+                  <h3 className="font-bold text-3xl mb-2">Programming Skills</h3>
+                  <div className="h-1 w-20 bg-primary rounded-full"></div>
+                </div>
+                <div className="space-y-6">
                   {skills.map((skill) => (
                     <div key={skill.category} className="group">
-                      <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wider">{skill.category}</p>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-2 h-2 bg-primary rounded-full"></div>
+                        <p className="text-sm font-bold text-foreground uppercase tracking-wider">{skill.category}</p>
+                      </div>
+                      <div className="flex flex-wrap gap-2 pl-5">
                         {skill.items.map((item) => (
                           <Badge 
                             key={item} 
                             variant="secondary" 
-                            className="px-3 py-1 text-sm font-medium hover:scale-105 transition-transform cursor-default"
+                            className="px-4 py-2 text-sm font-semibold hover:scale-110 hover:shadow-lg transition-all duration-200 cursor-default border border-border-subtle"
                           >
                             {item}
                           </Badge>
@@ -232,16 +276,20 @@ const Index = () => {
                 </div>
               </Card>
 
-              <Card className="p-6 border-border-subtle hover:shadow-lg transition-shadow">
-                <h3 className="font-bold text-xl mb-6">Work Experience</h3>
-                <div className="space-y-6">
+              <Card className="p-8 border-border-subtle hover:shadow-2xl transition-all duration-300">
+                <div className="mb-8">
+                  <h3 className="font-bold text-3xl mb-2">Work Experience</h3>
+                  <div className="h-1 w-20 bg-primary rounded-full"></div>
+                </div>
+                <div className="space-y-8">
                   {experience.map((exp, index) => (
-                    <div key={index} className={index !== experience.length - 1 ? "pb-6 border-b border-border-subtle" : ""}>
-                      <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-bold text-base">{exp.company}</h4>
-                        <span className="text-xs text-muted-foreground whitespace-nowrap ml-2">{exp.period}</span>
+                    <div key={index} className={`relative pl-8 ${index !== experience.length - 1 ? "pb-8 border-l-2 border-border-subtle" : ""}`}>
+                      <div className="absolute left-0 top-0 w-4 h-4 bg-primary rounded-full -translate-x-[9px]"></div>
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
+                        <h4 className="font-bold text-lg">{exp.company}</h4>
+                        <span className="text-xs text-muted-foreground font-semibold px-3 py-1 bg-background-subtle rounded-full whitespace-nowrap">{exp.period}</span>
                       </div>
-                      <p className="text-sm font-medium text-muted-foreground mb-2">{exp.role}</p>
+                      <p className="text-base font-semibold text-primary mb-3">{exp.role}</p>
                       <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
                     </div>
                   ))}
@@ -339,8 +387,79 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Contact Section */}
+      <section id="contact" className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Have a project in mind or want to collaborate? Drop me a message and let's create something amazing together.
+              </p>
+            </div>
+
+            <Card className="p-8 md:p-12 border-border-subtle shadow-xl">
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-base font-semibold">Name</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Your name" {...field} className="h-12" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-base font-semibold">Email</FormLabel>
+                        <FormControl>
+                          <Input type="email" placeholder="your.email@example.com" {...field} className="h-12" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-base font-semibold">Message</FormLabel>
+                        <FormControl>
+                          <Textarea 
+                            placeholder="Tell me about your project or idea..." 
+                            {...field} 
+                            className="min-h-[150px] resize-none"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <Button type="submit" size="lg" className="w-full md:w-auto gap-2 font-semibold">
+                    Send Message
+                    <Send size={18} />
+                  </Button>
+                </form>
+              </Form>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer id="contact" className="py-12 bg-background-subtle border-t border-border-subtle">
+      <footer className="py-12 bg-background-subtle border-t border-border-subtle">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-center md:text-left">
