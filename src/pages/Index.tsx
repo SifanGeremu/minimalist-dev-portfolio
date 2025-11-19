@@ -84,10 +84,25 @@ const Index = () => {
     { category: "Database", items: ["PostgreSQL", "MongoDB", "Redis", "MySQL"] }
   ];
 
-  const languages = [
-    { name: "English", level: "Native" },
-    { name: "Spanish", level: "Fluent" },
-    { name: "French", level: "Intermediate" }
+  const experience = [
+    { 
+      company: "Tech Innovators Inc.", 
+      role: "Senior Full-Stack Developer",
+      period: "2020 - Present",
+      description: "Leading development of enterprise-scale applications, mentoring junior developers, and architecting cloud solutions."
+    },
+    { 
+      company: "Digital Solutions Co.", 
+      role: "Full-Stack Developer",
+      period: "2018 - 2020",
+      description: "Built responsive web applications and RESTful APIs, optimized database performance and deployment pipelines."
+    },
+    { 
+      company: "StartUp Studios", 
+      role: "Frontend Developer",
+      period: "2016 - 2018",
+      description: "Developed user interfaces for multiple products, implemented responsive designs and improved site performance."
+    }
   ];
 
   return (
@@ -138,8 +153,8 @@ const Index = () => {
             </div>
             
             <div className="order-1 md:order-2">
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6">
-                <span className="text-foreground font-outline">JOHN</span><br />
+              <h1 className="text-7xl md:text-8xl lg:text-9xl font-black mb-6 leading-none tracking-tight">
+                <span className="text-foreground font-outline text-shadow-lg">JOHN</span><br />
                 <span className="text-foreground">SMITH</span>
               </h1>
               
@@ -195,34 +210,42 @@ const Index = () => {
             </div>
 
             <div className="space-y-6">
-              <Card className="p-6 border-border-subtle hover:shadow-lg transition-shadow">
-                <h3 className="font-bold text-lg mb-4">Programming Skills</h3>
-                <div className="space-y-3">
+              <Card className="p-6 border-border-subtle hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-background to-background-subtle">
+                <h3 className="font-bold text-xl mb-6">Programming Skills</h3>
+                <div className="space-y-4">
                   {skills.map((skill) => (
-                    <div key={skill.category}>
-                      <p className="text-sm text-muted-foreground mb-1">{skill.category}</p>
-                      <p className="text-sm">{skill.items.join(" • ")}</p>
+                    <div key={skill.category} className="group">
+                      <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wider">{skill.category}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {skill.items.map((item) => (
+                          <Badge 
+                            key={item} 
+                            variant="secondary" 
+                            className="px-3 py-1 text-sm font-medium hover:scale-105 transition-transform cursor-default"
+                          >
+                            {item}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>
               </Card>
 
               <Card className="p-6 border-border-subtle hover:shadow-lg transition-shadow">
-                <h3 className="font-bold text-lg mb-4">Language Skills</h3>
-                <div className="space-y-2">
-                  {languages.map((lang) => (
-                    <div key={lang.name} className="flex justify-between">
-                      <span className="text-sm">{lang.name}</span>
-                      <span className="text-sm text-muted-foreground">{lang.level}</span>
+                <h3 className="font-bold text-xl mb-6">Work Experience</h3>
+                <div className="space-y-6">
+                  {experience.map((exp, index) => (
+                    <div key={index} className={index !== experience.length - 1 ? "pb-6 border-b border-border-subtle" : ""}>
+                      <div className="flex justify-between items-start mb-2">
+                        <h4 className="font-bold text-base">{exp.company}</h4>
+                        <span className="text-xs text-muted-foreground whitespace-nowrap ml-2">{exp.period}</span>
+                      </div>
+                      <p className="text-sm font-medium text-muted-foreground mb-2">{exp.role}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
                     </div>
                   ))}
                 </div>
-              </Card>
-
-              <Card className="p-6 border-border-subtle hover:shadow-lg transition-shadow">
-                <h3 className="font-bold text-lg mb-2">Experience</h3>
-                <p className="text-3xl font-bold">8+</p>
-                <p className="text-sm text-muted-foreground">Years in Development</p>
               </Card>
             </div>
           </div>
