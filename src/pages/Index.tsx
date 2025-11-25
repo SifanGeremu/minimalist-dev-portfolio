@@ -189,7 +189,40 @@ const Index = () => {
       {/* Hero Section */}
       <section className="pt-24 pb-16 md:pt-32 md:pb-24">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Mobile Layout */}
+          <div className="md:hidden flex flex-col items-center text-center">
+            <img 
+              src={heroPortrait} 
+              alt="Professional portrait" 
+              className="w-64 h-64 object-cover rounded-lg shadow-lg mb-8"
+            />
+            
+            <h1 className="text-5xl font-black mb-6 leading-none tracking-tight">
+              <span className="text-foreground font-outline text-shadow-lg">JOHN</span><br />
+              <span className="text-foreground">SMITH</span>
+            </h1>
+            
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
+              <span className="text-muted-foreground text-sm">Web Developer</span>
+              <span className="text-muted-foreground text-sm">•</span>
+              <span className="text-muted-foreground text-sm">App Developer</span>
+              <span className="text-muted-foreground text-sm">•</span>
+              <span className="text-muted-foreground text-sm">SEO Optimizer</span>
+            </div>
+
+            <p className="text-muted-foreground text-base mb-8 leading-relaxed max-w-md">
+              Crafting digital experiences that blend beautiful design with powerful functionality. 
+              Specialized in building scalable web applications and mobile solutions.
+            </p>
+
+            <Button size="lg" className="group">
+              Get in touch
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+            </Button>
+          </div>
+
+          {/* Desktop Layout */}
+          <div className="hidden md:grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
               <img 
                 src={heroPortrait} 
