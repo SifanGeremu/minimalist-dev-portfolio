@@ -272,81 +272,74 @@ const Index = () => {
       {/* About Section */}
       <section id="about" className="py-16 md:py-24">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12">About Me</h2>
-          
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                I'm a passionate full-stack developer with over 8 years of experience building 
-                digital products. I specialize in creating elegant solutions that solve real-world 
-                problems and deliver exceptional user experiences.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                My approach combines clean code practices, modern technologies, and a deep 
-                understanding of user needs to create applications that not only work flawlessly 
-                but also delight users at every interaction.
-              </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">About Me</h2>
+          <div className="max-w-4xl">
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              I'm a passionate full-stack developer with over 8 years of experience building 
+              digital products. I specialize in creating elegant solutions that solve real-world 
+              problems and deliver exceptional user experiences.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              My approach combines clean code practices, modern technologies, and a deep 
+              understanding of user needs to create applications that not only work flawlessly 
+              but also delight users at every interaction.
+            </p>
+          </div>
+        </div>
+      </section>
 
-              <Card className="p-8 border-border-subtle hover:shadow-2xl transition-all duration-300">
-                <div className="mb-8">
-                  <h3 className="font-bold text-3xl mb-2">Work Experience</h3>
-                  <div className="h-1 w-20 bg-primary rounded-full"></div>
-                </div>
-                <div className="space-y-8">
-                  {experience.map((exp, index) => (
-                    <div key={index} className={`${index !== experience.length - 1 ? "pb-8 border-b border-border-subtle" : ""}`}>
-                      <div className="flex items-start gap-4 mb-4">
-                        <img 
-                          src={exp.logo} 
-                          alt={`${exp.company} logo`}
-                          className="w-14 h-14 rounded-lg object-cover border border-border-subtle"
-                        />
-                        <div className="flex-1">
-                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-2">
-                            <h4 className="font-bold text-xl">{exp.company}</h4>
-                            <span className="text-xs text-muted-foreground font-semibold px-3 py-1 bg-background-subtle rounded-full whitespace-nowrap">{exp.period}</span>
-                          </div>
-                          <p className="text-base font-semibold text-primary mb-3">{exp.role}</p>
-                        </div>
+      {/* Work Experience Section */}
+      <section className="py-16 md:py-24 bg-background-subtle">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12">Work Experience</h2>
+          <div className="max-w-4xl space-y-6">
+            {experience.map((exp, index) => (
+              <Card key={index} className="p-6 border-border-subtle hover:shadow-lg transition-all duration-300">
+                <div className="flex items-center gap-4">
+                  <img 
+                    src={exp.logo} 
+                    alt={`${exp.company} logo`}
+                    className="w-12 h-12 rounded-lg object-cover border border-border-subtle"
+                  />
+                  <div className="flex-1">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                      <div>
+                        <h4 className="font-bold text-lg">{exp.company}</h4>
+                        <p className="text-sm text-primary">{exp.role}</p>
                       </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
+                      <span className="text-xs text-muted-foreground font-medium">{exp.period}</span>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack Section */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12">Tech Stack</h2>
+          <div className="max-w-4xl space-y-8">
+            {skills.map((skill) => (
+              <div key={skill.category}>
+                <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-4">{skill.category}</h3>
+                <div className="flex flex-wrap gap-3">
+                  {skill.items.map((item) => (
+                    <div 
+                      key={item} 
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-background-subtle border border-border-subtle hover:border-primary transition-colors"
+                    >
+                      <div className="w-8 h-8 rounded bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center text-primary-foreground font-bold text-xs">
+                        {item.substring(0, 2).toUpperCase()}
+                      </div>
+                      <span className="text-sm font-medium">{item}</span>
                     </div>
                   ))}
                 </div>
-              </Card>
-            </div>
-
-            <div>
-              <Card className="p-8 border-border-subtle hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-background via-background-subtle to-background sticky top-24">
-                <div className="mb-8">
-                  <h3 className="font-bold text-3xl mb-2">Tech Stack</h3>
-                  <div className="h-1 w-20 bg-primary rounded-full"></div>
-                </div>
-                <div className="space-y-6">
-                  {skills.map((skill) => (
-                    <div key={skill.category} className="group">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <p className="text-sm font-bold text-foreground uppercase tracking-wider">{skill.category}</p>
-                      </div>
-                      <div className="grid grid-cols-2 gap-3 pl-5">
-                        {skill.items.map((item) => (
-                          <div 
-                            key={item} 
-                            className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background-subtle border border-border-subtle hover:scale-105 hover:shadow-lg transition-all duration-200 cursor-default group-hover:border-primary/50"
-                          >
-                            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center text-primary-foreground font-bold text-lg">
-                              {item.substring(0, 2).toUpperCase()}
-                            </div>
-                            <span className="text-xs font-semibold text-center">{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
