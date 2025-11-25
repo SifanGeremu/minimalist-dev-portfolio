@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -29,6 +30,7 @@ const contactFormSchema = z.object({
 
 const Index = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
   const { toast } = useToast();
   
   const form = useForm<z.infer<typeof contactFormSchema>>({
@@ -96,18 +98,21 @@ const Index = () => {
 
   const blogPosts = [
     {
+      id: "1",
       title: "Modern Web Development Best Practices",
       summary: "Explore the latest trends and techniques in building scalable web applications with modern frameworks and tools.",
       image: blog1,
       date: "March 15, 2024"
     },
     {
+      id: "2",
       title: "SEO Optimization Strategies for 2024",
       summary: "Learn essential SEO tactics to improve your website's visibility and ranking in search engine results.",
       image: blog2,
       date: "March 10, 2024"
     },
     {
+      id: "3",
       title: "Building Cross-Platform Mobile Apps",
       summary: "A comprehensive guide to developing mobile applications that work seamlessly across iOS and Android.",
       image: blog3,
@@ -124,19 +129,22 @@ const Index = () => {
 
   const experience = [
     { 
-      company: "Tech Innovators Inc.", 
+      company: "Tech Innovators Inc.",
+      logo: "https://placehold.co/60x60/6366f1/ffffff?text=TI",
       role: "Senior Full-Stack Developer",
       period: "2020 - Present",
       description: "Leading development of enterprise-scale applications, mentoring junior developers, and architecting cloud solutions."
     },
     { 
-      company: "Digital Solutions Co.", 
+      company: "Digital Solutions Co.",
+      logo: "https://placehold.co/60x60/8b5cf6/ffffff?text=DS",
       role: "Full-Stack Developer",
       period: "2018 - 2020",
       description: "Built responsive web applications and RESTful APIs, optimized database performance and deployment pipelines."
     },
     { 
-      company: "StartUp Studios", 
+      company: "StartUp Studios",
+      logo: "https://placehold.co/60x60/ec4899/ffffff?text=SS",
       role: "Frontend Developer",
       period: "2016 - 2018",
       description: "Developed user interfaces for multiple products, implemented responsive designs and improved site performance."
@@ -233,48 +241,18 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-bold mb-12">About Me</h2>
           
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
+          <div className="grid lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2">
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                 I'm a passionate full-stack developer with over 8 years of experience building 
                 digital products. I specialize in creating elegant solutions that solve real-world 
                 problems and deliver exceptional user experiences.
               </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
                 My approach combines clean code practices, modern technologies, and a deep 
                 understanding of user needs to create applications that not only work flawlessly 
                 but also delight users at every interaction.
               </p>
-            </div>
-
-            <div className="space-y-6">
-              <Card className="p-8 border-border-subtle hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-background via-background-subtle to-background">
-                <div className="mb-8">
-                  <h3 className="font-bold text-3xl mb-2">Programming Skills</h3>
-                  <div className="h-1 w-20 bg-primary rounded-full"></div>
-                </div>
-                <div className="space-y-6">
-                  {skills.map((skill) => (
-                    <div key={skill.category} className="group">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <p className="text-sm font-bold text-foreground uppercase tracking-wider">{skill.category}</p>
-                      </div>
-                      <div className="flex flex-wrap gap-2 pl-5">
-                        {skill.items.map((item) => (
-                          <Badge 
-                            key={item} 
-                            variant="secondary" 
-                            className="px-4 py-2 text-sm font-semibold hover:scale-110 hover:shadow-lg transition-all duration-200 cursor-default border border-border-subtle"
-                          >
-                            {item}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </Card>
 
               <Card className="p-8 border-border-subtle hover:shadow-2xl transition-all duration-300">
                 <div className="mb-8">
@@ -283,14 +261,54 @@ const Index = () => {
                 </div>
                 <div className="space-y-8">
                   {experience.map((exp, index) => (
-                    <div key={index} className={`relative pl-8 ${index !== experience.length - 1 ? "pb-8 border-l-2 border-border-subtle" : ""}`}>
-                      <div className="absolute left-0 top-0 w-4 h-4 bg-primary rounded-full -translate-x-[9px]"></div>
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
-                        <h4 className="font-bold text-lg">{exp.company}</h4>
-                        <span className="text-xs text-muted-foreground font-semibold px-3 py-1 bg-background-subtle rounded-full whitespace-nowrap">{exp.period}</span>
+                    <div key={index} className={`${index !== experience.length - 1 ? "pb-8 border-b border-border-subtle" : ""}`}>
+                      <div className="flex items-start gap-4 mb-4">
+                        <img 
+                          src={exp.logo} 
+                          alt={`${exp.company} logo`}
+                          className="w-14 h-14 rounded-lg object-cover border border-border-subtle"
+                        />
+                        <div className="flex-1">
+                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-2">
+                            <h4 className="font-bold text-xl">{exp.company}</h4>
+                            <span className="text-xs text-muted-foreground font-semibold px-3 py-1 bg-background-subtle rounded-full whitespace-nowrap">{exp.period}</span>
+                          </div>
+                          <p className="text-base font-semibold text-primary mb-3">{exp.role}</p>
+                        </div>
                       </div>
-                      <p className="text-base font-semibold text-primary mb-3">{exp.role}</p>
                       <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
+
+            <div>
+              <Card className="p-8 border-border-subtle hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-background via-background-subtle to-background sticky top-24">
+                <div className="mb-8">
+                  <h3 className="font-bold text-3xl mb-2">Tech Stack</h3>
+                  <div className="h-1 w-20 bg-primary rounded-full"></div>
+                </div>
+                <div className="space-y-6">
+                  {skills.map((skill) => (
+                    <div key={skill.category} className="group">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-2 h-2 bg-primary rounded-full"></div>
+                        <p className="text-sm font-bold text-foreground uppercase tracking-wider">{skill.category}</p>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3 pl-5">
+                        {skill.items.map((item) => (
+                          <div 
+                            key={item} 
+                            className="flex flex-col items-center gap-2 p-4 rounded-lg bg-background-subtle border border-border-subtle hover:scale-105 hover:shadow-lg transition-all duration-200 cursor-default group-hover:border-primary/50"
+                          >
+                            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center text-primary-foreground font-bold text-lg">
+                              {item.substring(0, 2).toUpperCase()}
+                            </div>
+                            <span className="text-xs font-semibold text-center">{item}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -376,7 +394,11 @@ const Index = () => {
                   <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                     {post.summary}
                   </p>
-                  <Button variant="link" className="p-0 h-auto font-semibold group">
+                  <Button 
+                    variant="link" 
+                    className="p-0 h-auto font-semibold group"
+                    onClick={() => navigate(`/blog/${post.id}`)}
+                  >
                     Read more
                     <ArrowRight className="ml-1 group-hover:translate-x-1 transition-transform" size={16} />
                   </Button>
