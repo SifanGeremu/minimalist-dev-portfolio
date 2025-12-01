@@ -133,21 +133,38 @@ const Index = () => {
       logo: "https://placehold.co/60x60/6366f1/ffffff?text=TI",
       role: "Senior Full-Stack Developer",
       period: "2020 - Present",
-      description: "Leading development of enterprise-scale applications, mentoring junior developers, and architecting cloud solutions."
+      location: "San Francisco, CA"
     },
     { 
       company: "Digital Solutions Co.",
       logo: "https://placehold.co/60x60/8b5cf6/ffffff?text=DS",
       role: "Full-Stack Developer",
       period: "2018 - 2020",
-      description: "Built responsive web applications and RESTful APIs, optimized database performance and deployment pipelines."
+      location: "New York, NY"
     },
     { 
       company: "StartUp Studios",
       logo: "https://placehold.co/60x60/ec4899/ffffff?text=SS",
       role: "Frontend Developer",
       period: "2016 - 2018",
-      description: "Developed user interfaces for multiple products, implemented responsive designs and improved site performance."
+      location: "Austin, TX"
+    }
+  ];
+
+  const education = [
+    {
+      institution: "Stanford University",
+      logo: "https://placehold.co/60x60/dc2626/ffffff?text=SU",
+      degree: "Master of Science",
+      field: "Computer Science",
+      period: "2014 - 2016"
+    },
+    {
+      institution: "MIT",
+      logo: "https://placehold.co/60x60/0ea5e9/ffffff?text=MIT",
+      degree: "Bachelor of Science",
+      field: "Software Engineering",
+      period: "2010 - 2014"
     }
   ];
 
@@ -291,55 +308,104 @@ const Index = () => {
       {/* Work Experience Section */}
       <section className="py-16 md:py-24 bg-background-subtle">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12">Work Experience</h2>
-          <div className="max-w-4xl space-y-6">
-            {experience.map((exp, index) => (
-              <Card key={index} className="p-6 border-border-subtle hover:shadow-lg transition-all duration-300">
-                <div className="flex items-center gap-4">
+          <div className="max-w-5xl">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2">Experience</h2>
+            <p className="text-muted-foreground mb-10">Professional journey and career highlights</p>
+            
+            <div className="space-y-4">
+              {experience.map((exp, index) => (
+                <div 
+                  key={index} 
+                  className="group flex items-start gap-4 p-4 md:p-5 rounded-xl bg-background border border-border-subtle hover:border-primary/30 hover:shadow-md transition-all duration-300"
+                >
                   <img 
                     src={exp.logo} 
                     alt={`${exp.company} logo`}
-                    className="w-12 h-12 rounded-lg object-cover border border-border-subtle"
+                    className="w-12 h-12 md:w-14 md:h-14 rounded-xl object-cover border border-border-subtle flex-shrink-0"
                   />
-                  <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-                      <div>
-                        <h4 className="font-bold text-lg">{exp.company}</h4>
-                        <p className="text-sm text-primary">{exp.role}</p>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-4">
+                      <div className="min-w-0">
+                        <h4 className="font-semibold text-base md:text-lg truncate">{exp.role}</h4>
+                        <p className="text-sm text-muted-foreground">{exp.company}</p>
                       </div>
-                      <span className="text-xs text-muted-foreground font-medium">{exp.period}</span>
+                      <div className="flex items-center gap-3 text-xs text-muted-foreground md:text-right flex-shrink-0">
+                        <span className="font-medium bg-background-subtle px-2 py-1 rounded">{exp.period}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </Card>
-            ))}
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2">Education</h2>
+            <p className="text-muted-foreground mb-10">Academic background and qualifications</p>
+            
+            <div className="space-y-4">
+              {education.map((edu, index) => (
+                <div 
+                  key={index} 
+                  className="group flex items-start gap-4 p-4 md:p-5 rounded-xl bg-background-subtle border border-border-subtle hover:border-primary/30 hover:shadow-md transition-all duration-300"
+                >
+                  <img 
+                    src={edu.logo} 
+                    alt={`${edu.institution} logo`}
+                    className="w-12 h-12 md:w-14 md:h-14 rounded-xl object-cover border border-border-subtle flex-shrink-0"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-4">
+                      <div className="min-w-0">
+                        <h4 className="font-semibold text-base md:text-lg">{edu.degree} in {edu.field}</h4>
+                        <p className="text-sm text-muted-foreground">{edu.institution}</p>
+                      </div>
+                      <div className="flex items-center gap-3 text-xs text-muted-foreground md:text-right flex-shrink-0">
+                        <span className="font-medium bg-background px-2 py-1 rounded">{edu.period}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Tech Stack Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-background-subtle">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12">Tech Stack</h2>
-          <div className="max-w-4xl space-y-8">
-            {skills.map((skill) => (
-              <div key={skill.category}>
-                <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-4">{skill.category}</h3>
-                <div className="flex flex-wrap gap-3">
-                  {skill.items.map((item) => (
-                    <div 
-                      key={item} 
-                      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-background-subtle border border-border-subtle hover:border-primary transition-colors"
-                    >
-                      <div className="w-8 h-8 rounded bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center text-primary-foreground font-bold text-xs">
-                        {item.substring(0, 2).toUpperCase()}
-                      </div>
-                      <span className="text-sm font-medium">{item}</span>
-                    </div>
-                  ))}
+          <div className="max-w-5xl">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2">Tech Stack</h2>
+            <p className="text-muted-foreground mb-10">Technologies and tools I work with</p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {skills.map((skill) => (
+                <div 
+                  key={skill.category} 
+                  className="p-5 rounded-xl bg-background border border-border-subtle"
+                >
+                  <h3 className="text-xs font-semibold text-primary uppercase tracking-widest mb-4">
+                    {skill.category}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {skill.items.map((item) => (
+                      <span 
+                        key={item} 
+                        className="px-3 py-1.5 text-sm font-medium rounded-md bg-background-subtle text-foreground border border-border-subtle hover:border-primary/50 transition-colors"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
