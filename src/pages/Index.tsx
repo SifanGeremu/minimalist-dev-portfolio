@@ -275,7 +275,7 @@ const Index = () => {
       </section>
 
       {/* Quote Section */}
-      <section className="py-16 bg-background-subtle">
+      <section className="py-10 md:py-12 bg-background-subtle">
         <div className="container mx-auto px-6">
           <blockquote className="text-center max-w-3xl mx-auto">
             <p className="text-3xl md:text-4xl italic text-muted-foreground leading-relaxed">
@@ -287,7 +287,7 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 md:py-24">
+      <section id="about" className="py-10 md:py-14">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-bold mb-8">About Me</h2>
           <div className="max-w-4xl">
@@ -306,7 +306,7 @@ const Index = () => {
       </section>
 
       {/* Work Experience Section */}
-      <section className="py-16 md:py-24 bg-background-subtle">
+      <section className="py-10 md:py-14 bg-background-subtle">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-2">Experience</h2>
@@ -342,7 +342,7 @@ const Index = () => {
       </section>
 
       {/* Education Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-10 md:py-14">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-2">Education</h2>
@@ -378,7 +378,7 @@ const Index = () => {
       </section>
 
       {/* Tech Stack Section */}
-      <section className="py-16 md:py-24 bg-background-subtle">
+      <section className="py-10 md:py-14 bg-background-subtle">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-2">Tech Stack</h2>
@@ -411,7 +411,7 @@ const Index = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-16 md:py-24 bg-background-subtle">
+      <section id="portfolio" className="py-10 md:py-14">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Featured Projects</h2>
@@ -461,7 +461,7 @@ const Index = () => {
       </section>
 
       {/* Blog Section */}
-      <section id="blog" className="py-16 md:py-24">
+      <section id="blog" className="py-10 md:py-14 bg-background-subtle">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Latest Blog Posts</h2>
@@ -502,7 +502,7 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 md:py-24 bg-background">
+      <section id="contact" className="py-10 md:py-14 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
