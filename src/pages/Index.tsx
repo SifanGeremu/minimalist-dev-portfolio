@@ -252,9 +252,11 @@ const Index = () => {
               Specialized in building scalable web applications and mobile solutions.
             </p>
 
-            <Button size="lg" className="group">
-              Get in touch
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+            <Button size="lg" className="group" asChild>
+              <a href="#contact">
+                Get in touch
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+              </a>
             </Button>
           </div>
 
@@ -285,9 +287,11 @@ const Index = () => {
                 Specialized in building scalable web applications and mobile solutions.
               </p>
 
-              <Button size="lg" className="group">
-                Get in touch
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+              <Button size="lg" className="group" asChild>
+                <a href="#contact">
+                  Get in touch
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                </a>
               </Button>
             </div>
           </div>
