@@ -657,10 +657,11 @@ const Index = () => {
 
       <section className="py-10 md:py-14 bg-background-subtle">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-3 text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-center">
             Experience
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 text-center">
+
+          <p className="text-base sm:text-lg md:text-base text-muted-foreground mb-8 text-center">
             Professional journey and career highlights
           </p>
 
@@ -669,37 +670,34 @@ const Index = () => {
               <div
                 key={index}
                 className="
-            group p-6 rounded-xl border bg-background border-border-subtle 
-            hover:border-primary/30 hover:shadow-md transition-all duration-300 
+            group p-5 md:p-6 rounded-xl border bg-background border-border-subtle 
+            hover:border-primary/30 hover:shadow-md transition-all duration-300
 
-            /* mobile styles */
-            flex flex-col items-center text-center gap-4
-
-            /* tablet+ */
-            md:flex-row md:items-start md:text-left
+            flex flex-col md:flex-row gap-4
           "
               >
                 <img
                   src={exp.logo}
                   alt={`${exp.company} logo`}
-                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl border border-border-subtle object-cover flex-shrink-0"
+                  className="w-16 h-16 rounded-xl object-cover border"
                 />
 
                 <div className="flex-1">
-                  <h4 className="font-semibold text-xl sm:text-2xl md:text-3xl leading-tight">
+                  {/* Mobile bigger — Desktop normal */}
+                  <h4 className="text-xl sm:text-2xl md:text-xl font-semibold leading-tight">
                     {exp.role}
                   </h4>
 
-                  <p className="text-base sm:text-lg text-muted-foreground font-medium">
+                  <p className="text-lg sm:text-xl md:text-base text-muted-foreground font-medium">
                     {exp.company}
                   </p>
 
-                  <p className="text-base sm:text-lg text-muted-foreground mt-1 leading-relaxed">
+                  <p className="text-base sm:text-lg md:text-base text-muted-foreground leading-relaxed mt-1">
                     {exp.Description}
                   </p>
                 </div>
 
-                <div className="mt-2 md:mt-0 flex flex-col sm:flex-row sm:items-center gap-2 text-sm sm:text-base text-muted-foreground">
+                <div className="flex flex-col sm:flex-row items-start md:items-center gap-2 mt-2 md:mt-0 text-sm md:text-sm text-muted-foreground">
                   <span className="font-medium bg-background-subtle px-2 py-1 rounded">
                     {exp.period}
                   </span>
