@@ -549,101 +549,78 @@ const Index = () => {
           </div>
         )}
       </nav>
-
       {/* Hero Section */}
       <section className="pt-24 pb-16 md:pt-32 md:pb-24">
         <div className="container mx-auto px-6">
-          {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col items-center text-center">
-            <img
-              src={port}
-              alt="Professional portrait"
-              className="w-64 h-64 object-cover rounded-lg shadow-lg mb-8"
-            />
-
-            <h1 className="text-5xl font-black mb-6 leading-none tracking-tight">
-              <span className="text-foreground font-outline text-shadow-lg">
-                Sifan
-              </span>
-              <br />
-              <span className="text-foreground">Geremu</span>
-            </h1>
-
-            <div className="flex flex-wrap justify-center gap-2 mb-8">
-              <span className="text-muted-foreground text-sm">
-                Software Engineer
-              </span>
-              <span className="text-muted-foreground text-sm">•</span>
-              <span className="text-muted-foreground text-sm">
-                Backend developer
-              </span>
-              <span className="text-muted-foreground text-sm">•</span>
-              <span className="text-muted-foreground text-sm">
-                AI enthusiast
-              </span>
-            </div>
-
-            <p className="text-muted-foreground text-base mb-8 leading-relaxed max-w-md">
-              Transforming ideas into scalable web and mobile solutions blending
-              backend mastery with cutting‑edge AI innovation
-            </p>
-
-            <Button size="lg" className="group" asChild>
-              <a href="#contact">
-                Get in touch
-                <ArrowRight
-                  className="ml-2 group-hover:translate-x-1 transition-transform"
-                  size={20}
-                />
-              </a>
-            </Button>
-          </div>
-
-          {/* Desktop Layout */}
-          <div className="hidden md:grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Image */}
+            <div className="flex justify-center lg:justify-start">
               <img
                 src={port}
                 alt="Professional portrait"
-                className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+                className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-lg shadow-lg"
               />
             </div>
 
-            <div className="order-1 md:order-2">
-              <h1 className="text-7xl md:text-8xl lg:text-9xl font-black mb-6 leading-none tracking-tight">
-                <span className="text-foreground font-outline text-shadow-lg">
+            {/* Text Content */}
+            <div className="text-center lg:text-left">
+              {/* Titles side by side */}
+              <h1 className="flex justify-center lg:justify-start gap-3 flex-wrap font-black mb-6 leading-none tracking-tight">
+                <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-foreground font-outline text-shadow-lg">
                   Sifan
                 </span>
-                <br />
-                <span className="text-foreground">Geremu</span>
+                <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-foreground">
+                  Geremu
+                </span>
               </h1>
 
-              <div className="flex flex-wrap gap-2 mb-8">
-                <Badge variant="secondary" className="text-sm py-2 px-4">
+              {/* Roles */}
+              <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
+                <span className="text-muted-foreground text-lg sm:text-xl font-medium">
                   Software Engineer
-                </Badge>
-                <Badge variant="secondary" className="text-sm py-2 px-4">
+                </span>
+                <span className="text-muted-foreground text-lg sm:text-xl">
+                  •
+                </span>
+                <span className="text-muted-foreground text-lg sm:text-xl font-medium">
                   Backend Developer
-                </Badge>
-                <Badge variant="secondary" className="text-sm py-2 px-4">
+                </span>
+                <span className="text-muted-foreground text-lg sm:text-xl">
+                  •
+                </span>
+                <span className="text-muted-foreground text-lg sm:text-xl font-medium">
                   AI Enthusiast
-                </Badge>
+                </span>
               </div>
 
-              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+              {/* Description */}
+              <p className="text-muted-foreground text-lg sm:text-xl md:text-2xl mb-8 leading-relaxed max-w-md lg:max-w-lg mx-auto lg:mx-0">
                 Transforming ideas into scalable web and mobile solutions
                 blending backend mastery with cutting‑edge AI innovation
               </p>
 
-              <Button size="lg" className="group" asChild>
-                <a href="#contact">
-                  Get in touch
-                  <ArrowRight
-                    className="ml-2 group-hover:translate-x-1 transition-transform"
-                    size={20}
-                  />
-                </a>
-              </Button>
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                <Button size="lg" className="group" asChild>
+                  <a href="#contact">
+                    Get in touch
+                    <ArrowRight
+                      className="ml-2 group-hover:translate-x-1 transition-transform"
+                      size={20}
+                    />
+                  </a>
+                </Button>
+
+                <Button size="lg" variant="secondary" asChild>
+                  <a
+                    href="https://drive.google.com/your-resume-link-here"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Download Resume
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -678,54 +655,58 @@ const Index = () => {
         </div>
       </section> */}
 
-      {/* Work Experience Section */}
       <section className="py-10 md:py-14 bg-background-subtle">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-center">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-3 text-center">
             Experience
           </h2>
-          <p className="text-muted-foreground mb-8 text-center">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 text-center">
             Professional journey and career highlights
           </p>
 
-          <div className="space-y-4">
+          <div className="space-y-6">
             {experience.map((exp, index) => (
               <div
                 key={index}
-                className="group flex items-start gap-4 p-4 md:p-5 rounded-xl bg-background border border-border-subtle hover:border-primary/30 hover:shadow-md transition-all duration-300"
+                className="
+            group p-6 rounded-xl border bg-background border-border-subtle 
+            hover:border-primary/30 hover:shadow-md transition-all duration-300 
+
+            /* mobile styles */
+            flex flex-col items-center text-center gap-4
+
+            /* tablet+ */
+            md:flex-row md:items-start md:text-left
+          "
               >
                 <img
                   src={exp.logo}
                   alt={`${exp.company} logo`}
-                  className="w-12 h-12 md:w-14 md:h-14 rounded-xl object-cover border border-border-subtle flex-shrink-0"
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl border border-border-subtle object-cover flex-shrink-0"
                 />
 
-                <div className="flex-1 min-w-0">
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 md:gap-4">
-                    <div className="min-w-0 md:flex-1">
-                      <h4 className="font-semibold text-base md:text-lg truncate">
-                        {exp.role}
-                      </h4>
-                      <p className="text-sm text-muted-foreground font-medium mb-2">
-                        {exp.company}
-                      </p>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {exp.Description}
-                      </p>
-                    </div>
+                <div className="flex-1">
+                  <h4 className="font-semibold text-xl sm:text-2xl md:text-3xl leading-tight">
+                    {exp.role}
+                  </h4>
 
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-3 text-xs text-muted-foreground md:text-right flex-shrink-0 mt-2 md:mt-0">
-                      <span className="font-medium bg-background-subtle px-2 py-1 rounded">
-                        {exp.period}
-                      </span>
-                      <span className="text-foreground/70 hidden sm:inline">
-                        •
-                      </span>
-                      <span className="font-medium text-primary/80">
-                        {exp.location}
-                      </span>
-                    </div>
-                  </div>
+                  <p className="text-base sm:text-lg text-muted-foreground font-medium">
+                    {exp.company}
+                  </p>
+
+                  <p className="text-base sm:text-lg text-muted-foreground mt-1 leading-relaxed">
+                    {exp.Description}
+                  </p>
+                </div>
+
+                <div className="mt-2 md:mt-0 flex flex-col sm:flex-row sm:items-center gap-2 text-sm sm:text-base text-muted-foreground">
+                  <span className="font-medium bg-background-subtle px-2 py-1 rounded">
+                    {exp.period}
+                  </span>
+                  <span className="hidden sm:inline">•</span>
+                  <span className="font-medium text-primary/80">
+                    {exp.location}
+                  </span>
                 </div>
               </div>
             ))}
