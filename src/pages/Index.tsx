@@ -49,6 +49,7 @@ import teamflow from "@/assets/teamflow.png";
 import codebattle from "@/assets/codebattle.png";
 import devquotes from "@/assets/devquotes.png";
 import movieden from "@/assets/movieden.png";
+import stackstep from "@/assets/stackstep.jpg";
 import emailjs from "@emailjs/browser";
 const contactFormSchema = z.object({
   name: z
@@ -112,6 +113,14 @@ const Index = () => {
   };
 
   const projects = [
+    {
+      title: "StackStep",
+      description:
+        "StackStep turns learning into building.Phased, project‑based roadmaps powered by AI help developers master tech stacks by shipping real projects, not reading endless docs.",
+      image: stackstep,
+      tags: ["React", "Express", "MongoDB"],
+      link: "https://stack-step.vercel.app/",
+    },
     {
       title: "Code battle",
       description:
@@ -460,6 +469,13 @@ const Index = () => {
       logo: hulogo,
       degree: "Bachelor of Science",
       field: "Computer Science",
+      period: "2023 - 2026",
+    },
+    {
+      institution: "Haramaya University",
+      logo: hulogo,
+      degree: "Bachelor of Arts",
+      field: "Management",
       period: "2023 - 2026",
     },
     {
